@@ -16,4 +16,4 @@ Où ? Les produits peuvent être récupérés dans un périmètre fixé par l'ut
 
 Qui ? Cette application web sera destinée à toute personne lambda quel que soit son statut et pourra être aussi bien utilisable par les vendeurs que par les acheteurs. 
 
-Quoi ? Une application simple qui cible les produits et les différents commes.
+Quoi ? Une application simple qui cible les produits et les différents commerces.
