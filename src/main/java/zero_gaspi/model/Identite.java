@@ -1,4 +1,4 @@
-package zero_gaspi.dao.jpa;
+package zero_gaspi.model;
 
 public class Identite {
 
