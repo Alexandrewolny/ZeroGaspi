@@ -21,12 +21,7 @@ public class CommandeGratuite {
 		super();
 	}
 	
-	public CommandeGratuite(Long id, Commande commande) {
-		super();
-		this.id = id;
-		this.commande = commande;
-	}
-
+	
 	public CommandeGratuite(Long id, Commande commande) {
 		super();
 		this.id = id;
