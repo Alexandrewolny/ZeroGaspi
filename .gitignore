@@ -82,3 +82,6 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
+target/classes/META-INF/MANIFEST.MF
+target/classes/META-INF/maven/zero-gaspi-back/back-end/pom.properties
