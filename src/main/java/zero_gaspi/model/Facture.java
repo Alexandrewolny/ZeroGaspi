@@ -16,30 +16,51 @@ public class Facture {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name = "numeroFacture")
-	private int duree;
 	
 	//@OneToOne
 	//@JoinColumn(name = "id")
 	@Transient
 	private Commande commande;
+
 	
-	public Facture(Long id) {
-		super();
-		this.id = id;
-	}
 
 	public Facture() {
 		super();
 	}
 
+
+	public Facture(Commande commande) {
+		super();
+		this.commande = commande;
+	}
+
+
+	public Facture(Long id, Commande commande) {
+		super();
+		this.id = id;
+		this.commande = commande;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+	
 	
 	
 }

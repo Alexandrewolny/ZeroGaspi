@@ -25,22 +25,26 @@ public class Lot {
 	//@JoinColumn(name = "id")
 	@Transient
 	private Commande commande;
+
+	
 	
 	public Lot() {
 		super();
 	}
 
-	public Lot(String libelle, String description) {
+	public Lot(String libelle, String description, Commande commande) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
+		this.commande = commande;
 	}
 
-	public Lot(Long id, String libelle, String description) {
+	public Lot(Long id, String libelle, String description, Commande commande) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
+		this.commande = commande;
 	}
 
 	public Long getId() {
@@ -67,5 +71,14 @@ public class Lot {
 		this.description = description;
 	}
 
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+	
+	
 	
 }
