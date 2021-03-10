@@ -1,63 +1,37 @@
 package zero_gaspi.model;
 
+import java.util.Date;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name="commande_payante")
-public class CommandePayante {
-	@Id
-	@GeneratedValue
-	private Long id;
+@DiscriminatorValue("achat")
+public class CommandePayante extends Commande {
 	private double montant;
-	/*@OneToOne
-	@JoinColumn(name="id")*/
-	@Transient
-	private Commande Commande;
 	
 	public CommandePayante() {
 		super();
 	}
 
-	public CommandePayante(Long id, double montant, zero_gaspi.model.Commande commande) {
-		super();
-		this.id = id;
+	public CommandePayante(Long id, String listeProduits, Date datePaiement, Date dateEnvoie, Date dateArrivee, double montant) {
+		super(id, listeProduits, datePaiement, dateEnvoie, dateArrivee);
 		this.montant = montant;
-		Commande = commande;
 	}
 
-	public CommandePayante(double montant, zero_gaspi.model.Commande commande) {
-		super();
+	public CommandePayante(String listeProduits, Date datePaiement, Date dateEnvoie, Date dateArrivee, double montant) {
+		super(listeProduits, datePaiement, dateEnvoie, dateArrivee);
 		this.montant = montant;
-		Commande = commande;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public double getMontant() {
 		return montant;
 	}
 
 	public void setMontant(double montant) {
 		this.montant = montant;
-	}
-
-	public Commande getCommande() {
-		return Commande;
-	}
-
-	public void setCommande(Commande commande) {
-		Commande = commande;
 	}
 }

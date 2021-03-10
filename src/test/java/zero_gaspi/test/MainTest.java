@@ -20,6 +20,7 @@ import zero_gaspi.dao.IPaiement;
 import zero_gaspi.dao.IParticulier;
 import zero_gaspi.dao.IVendeur;
 import zero_gaspi.model.Client;
+import zero_gaspi.model.CommandePayante;
 import zero_gaspi.model.Connexion;
 import zero_gaspi.model.Vendeur;
 
@@ -49,12 +50,15 @@ public class MainTest {
 		//Identite identite = new Identite("0645993786","rue bidule","59000","Adresse","Nom","Prenom",connexion);
 		Client client = new Client("0645993786","rue bidule","59000","Adresse","Nom","Prenom", connexion, 10);
 		Vendeur vendeur = new Vendeur("0645993786","rue bidule","59000","Adresse","Nom","Prenom", connexion,sdf.parse("01/01/2001"));
+		CommandePayante cp = new CommandePayante("", sdf.parse("01/01/2001"), sdf.parse("01/01/2001"), sdf.parse("01/01/2001"), 0);
 		
-		connexionDao.create(connexion);
+		
+		//connexionDao.create(connexion);
 		//identiteDao.create(identite);
 		//clientDao.create(client);
-		vendeurDao.create(vendeur);
-		
+		//vendeurDao.create(vendeur);
+		//commandeGratuiteDao.create(cg);
+		commandePayanteDao.create(cp);
 		
 	
 
