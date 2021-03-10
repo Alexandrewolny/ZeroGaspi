@@ -12,9 +12,6 @@ import javax.persistence.Table;
 @DiscriminatorValue("client")
 public class Client extends Identite {
 
-	@Id
-	@GeneratedValue
-	private Long id;
 	@Column(name = "perimetre")
 	private int perimetre;
 

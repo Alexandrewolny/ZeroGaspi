@@ -16,9 +16,7 @@ import javax.persistence.Transient;
 @Table(name = "vendeur")
 @DiscriminatorValue("vendeur")
 public class Vendeur extends Identite {
-	@Id
-	@GeneratedValue
-	private Long id;
+
 	@Temporal(TemporalType.DATE)
 	private Date horaire;
 
@@ -30,7 +28,6 @@ public class Vendeur extends Identite {
 	public Vendeur(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
 			String prenom, Connexion connexion, Date horaire) {
 		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
-		this.id = id;
 		this.horaire = horaire;
 	}
 
