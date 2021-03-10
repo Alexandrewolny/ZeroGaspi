@@ -13,69 +13,49 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="vendeur")
+@Table(name = "vendeur")
 @DiscriminatorValue("vendeur")
-public class Vendeur {
+public class Vendeur extends Identite {
 	@Id
 	@GeneratedValue
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date horaire;
-	//@OneToOne
-	@Transient
-	private Identite identite;
-	
-	
+
+
 	public Vendeur() {
 		super();
 	}
 
-
-	public Vendeur(Long id, Date horaire, Identite identite) {
-		super();
+	public Vendeur(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
+			String prenom, Connexion connexion, Date horaire) {
+		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.id = id;
 		this.horaire = horaire;
-		this.identite = identite;
 	}
 
-
-	public Vendeur(Date horaire, Identite identite) {
-		super();
+	public Vendeur(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
+			Connexion connexion, Date horaire) {
+		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.horaire = horaire;
-		this.identite = identite;
 	}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public Date getHoraire() {
 		return horaire;
 	}
-
 
 	public void setHoraire(Date horaire) {
 		this.horaire = horaire;
 	}
 
 
-	public Identite getIdentite() {
-		return identite;
-	}
 
-
-	public void setIdentite(Identite identite) {
-		this.identite = identite;
-	}
-
-	
-	
-	
 }

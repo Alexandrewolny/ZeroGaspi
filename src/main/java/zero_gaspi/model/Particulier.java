@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="particulier")
@@ -14,9 +15,9 @@ public class Particulier {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(name = "libelle", length = 255)
+	@Column(length = 255)
 	private String libelle;
-	
+	@Transient
 	private Client client;
 
 	public Particulier() {

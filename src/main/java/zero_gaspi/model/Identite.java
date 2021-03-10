@@ -18,9 +18,8 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "identite")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("Identite")
 @DiscriminatorColumn(name="type_identite")
-public class Identite {
+public abstract class Identite {
 
 	@Id
 	@GeneratedValue
@@ -34,17 +33,15 @@ public class Identite {
 	//@OneToMany
 	//@JoinColumn(name="id")
 	@Transient
-	private List<Connexion> connexions;
-	//@OneToOne
-	@Transient
-	private Vendeur vendeur;
+	private Connexion connexion;
+	
 	
 	public Identite() {
 		super();
 	}
 
 	public Identite(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
-			String prenom, List<Connexion> connexions, Vendeur vendeur) {
+			String prenom, Connexion connexion) {
 		super();
 		this.id = id;
 		this.numeroTelephone = numeroTelephone;
@@ -53,12 +50,11 @@ public class Identite {
 		Adresse = adresse;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.connexions = connexions;
-		this.vendeur = vendeur;
+		this.connexion = connexion;
 	}
 
 	public Identite(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
-			List<Connexion> connexions, Vendeur vendeur) {
+			Connexion connexion) {
 		super();
 		this.numeroTelephone = numeroTelephone;
 		this.rue = rue;
@@ -66,8 +62,7 @@ public class Identite {
 		Adresse = adresse;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.connexions = connexions;
-		this.vendeur = vendeur;
+		this.connexion = connexion;
 	}
 
 	public Long getId() {
@@ -126,21 +121,15 @@ public class Identite {
 		this.prenom = prenom;
 	}
 
-	public List<Connexion> getConnexions() {
-		return connexions;
+	public Connexion getConnexions() {
+		return connexion;
 	}
 
-	public void setConnexions(List<Connexion> connexions) {
-		this.connexions = connexions;
+	public void setConnexions(Connexion connexion) {
+		this.connexion = connexion;
 	}
 
-	public Vendeur getVendeur() {
-		return vendeur;
-	}
 
-	public void setVendeur(Vendeur vendeur) {
-		this.vendeur = vendeur;
-	}
 	
 	
 	

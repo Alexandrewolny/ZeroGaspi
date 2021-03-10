@@ -8,39 +8,45 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="client")
+@Table(name = "client")
 @DiscriminatorValue("client")
-public class Client {
+public class Client extends Identite {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(name="perimetre")
+	@Column(name = "perimetre")
 	private int perimetre;
+
 	public Client() {
 		super();
 	}
-	public Client(Long id, int perimetre) {
-		super();
-		this.id = id;
+
+	public Client(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
+			String prenom, Connexion connexion, int perimetre) {
+		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.perimetre = perimetre;
 	}
-	public Client(int perimetre) {
-		super();
+
+	public Client(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
+			Connexion connexion, int perimetre) {
+		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.perimetre = perimetre;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public int getPerimetre() {
 		return perimetre;
 	}
+
 	public void setPerimetre(int perimetre) {
 		this.perimetre = perimetre;
 	}
 
-	
-	
 }

@@ -18,27 +18,25 @@ public class Connexion {
 	private Long id;
 	private String mail;
 	private String motDePasse;
-	@OneToMany
-	@Transient
-	private List<Identite> identites;
+
 	
 	public Connexion() {
 		super();
 	}
 
-	public Connexion(Long id, String mail, String motDePasse, List<Identite> identites) {
+	public Connexion(Long id, String mail, String motDePasse) {
 		super();
 		this.id = id;
 		this.mail = mail;
 		this.motDePasse = motDePasse;
-		this.identites = identites;
+	
 	}
 
-	public Connexion(String mail, String motDePasse, List<Identite> identites) {
+	public Connexion(String mail, String motDePasse) {
 		super();
 		this.mail = mail;
 		this.motDePasse = motDePasse;
-		this.identites = identites;
+	
 	}
 
 	public Long getId() {
@@ -65,14 +63,6 @@ public class Connexion {
 		this.motDePasse = motDePasse;
 	}
 
-	public List<Identite> getIdentites() {
-		return identites;
-	}
-
-	public void setIdentites(List<Identite> identites) {
-		this.identites = identites;
-	}
-	
 	
 	
 	
