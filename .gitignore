@@ -83,6 +83,5 @@ nb-configuration.xml
 ##############################
 .DS_Store
 
-target/classes/META-INF/MANIFEST.MF
-target/classes/META-INF/maven/zero-gaspi-back/back-end/pom.properties
-src/main/resources/META-INF/persistence.xml
+# Database properties
+src/main/ressources/db.properties
