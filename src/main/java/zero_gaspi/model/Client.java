@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "client")
 @DiscriminatorValue("client")
 public class Client extends Identite {
+
 	@Id
 	@GeneratedValue
 	private Long id;

@@ -5,7 +5,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="association")
@@ -18,6 +21,10 @@ public class Association {
 	private String libelle;
 	@Column(name="numero_rna", length = 45)
 	private int numero;
+	@OneToOne
+	@JoinColumn(name="id")
+	@Transient
+	private Client client;
 	
 	public Association() {
 		super();
