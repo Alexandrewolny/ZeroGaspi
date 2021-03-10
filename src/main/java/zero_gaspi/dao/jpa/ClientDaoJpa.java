@@ -4,46 +4,47 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import zero_gaspi.dao.IClient;
 import zero_gaspi.model.Client;
 
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 public class ClientDaoJpa implements IClient {
+	
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public List<Client> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Client> query = em.createQuery("select clt from Client clt", Client.class);
+		return query.getResultList();
 	}
 
 	@Override
 	public Client find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Client.class, id);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void create(Client obj) {
-		// TODO Auto-generated method stub
-		
+		em.persist(obj);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public Client update(Client obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		Client client = em.find(Client.class, id);
+		em.remove(client);
 		
 	}
 
