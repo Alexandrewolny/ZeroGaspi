@@ -17,35 +17,31 @@ public class PaiementDaoJpa implements IPaiement {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public List<Paiement> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("select p from Paiement p", Paiement.class).getResultList();
 	}
 
 	@Override
 	public Paiement find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Paiement.class, id);
 	}
 
 	@Override
 	public void create(Paiement obj) {
-		// TODO Auto-generated method stub
-
+		em.persist(obj);
 	}
 
 	@Override
 	public Paiement update(Paiement obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-
+		Paiement paiement = em.find(Paiement.class, id);
+		em.remove(paiement);
 	}
 
 }

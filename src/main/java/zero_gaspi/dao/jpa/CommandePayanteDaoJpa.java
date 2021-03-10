@@ -17,35 +17,31 @@ public class CommandePayanteDaoJpa implements ICommandePayante{
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public List<CommandePayante> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("select cp from CommandePayante cp", CommandePayante.class).getResultList();
 	}
 
 	@Override
 	public CommandePayante find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(CommandePayante.class, id);
 	}
 
 	@Override
 	public void create(CommandePayante obj) {
-		// TODO Auto-generated method stub
-		
+		em.persist(obj);
 	}
 
 	@Override
 	public CommandePayante update(CommandePayante obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		CommandePayante commandePayante = em.find(CommandePayante.class, id);
+		em.remove(commandePayante);
 	}
 
 }
