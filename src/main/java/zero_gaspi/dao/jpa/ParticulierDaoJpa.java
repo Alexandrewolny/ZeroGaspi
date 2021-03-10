@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,31 +20,30 @@ public class ParticulierDaoJpa implements IParticulier {
 
 	@Override
 	public List<Particulier> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Particulier find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void create(Particulier obj) {
-		// TODO Auto-generated method stub
+		TypedQuery<Particulier> query = em.createQuery("select particluer from Particulier particulier", Particulier.class);
+		return query.getResultList();
 		
 	}
 
 	@Override
+	public Particulier find(Long id) {
+		return em.find(Particulier.class, id);
+	}
+
+	@Override
+	public void create(Particulier obj) {
+		em.persist(obj);
+	}
+
+	@Override
 	public Particulier update(Particulier obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		Particulier particulier = em.find(Particulier.class, id);
+		em.remove(particulier);
 		
 	}
 

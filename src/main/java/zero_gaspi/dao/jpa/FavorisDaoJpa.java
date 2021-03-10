@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import zero_gaspi.dao.IFavoris;
 import zero_gaspi.model.ListeFavori;
+import zero_gaspi.model.Particulier;
 
 @Repository
 @Transactional
@@ -19,31 +21,32 @@ public class FavorisDaoJpa implements IFavoris {
 
 	@Override
 	public List<ListeFavori> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<ListeFavori> query = em.createQuery("select p from ListeFavori p", ListeFavori.class);
+		return query.getResultList();
+		
 	}
 
 	@Override
 	public ListeFavori find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(ListeFavori.class, id);
 	}
 
 	@Override
 	public void create(ListeFavori obj) {
-		// TODO Auto-generated method stub
+		em.persist(obj);
 		
 	}
 
 	@Override
 	public ListeFavori update(ListeFavori obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		ListeFavori listefavori = em.find(ListeFavori.class, id);
+		em.remove(listefavori);
+		
 		
 	}
 
