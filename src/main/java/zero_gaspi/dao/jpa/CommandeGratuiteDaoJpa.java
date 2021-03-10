@@ -17,35 +17,31 @@ public class CommandeGratuiteDaoJpa implements ICommandeGratuite {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public List<CommandeGratuite> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("select cg from CommandeGratuite cg", CommandeGratuite.class).getResultList();
 	}
 
 	@Override
 	public CommandeGratuite find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(CommandeGratuite.class, id);
 	}
 
 	@Override
 	public void create(CommandeGratuite obj) {
-		// TODO Auto-generated method stub
-
+		em.persist(obj);
 	}
 
 	@Override
 	public CommandeGratuite update(CommandeGratuite obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-
+		CommandeGratuite commandeGratuite = em.find(CommandeGratuite.class, id);
+		em.remove(commandeGratuite);
 	}
 
 }
