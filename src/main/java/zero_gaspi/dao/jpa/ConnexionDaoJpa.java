@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,31 +21,32 @@ public class ConnexionDaoJpa implements IConnexion {
 
 	@Override
 	public List<Connexion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Connexion> query = em.createQuery("select connexion from Connexion connexion", Connexion.class);
+
+		return query.getResultList();
 	}
 
 	@Override
 	public Connexion find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Connexion.class, id);
 	}
 
 	@Override
 	public void create(Connexion obj) {
-		// TODO Auto-generated method stub
+		em.persist(obj);
 
 	}
 
 	@Override
 	public Connexion update(Connexion obj) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+
+		Connexion connexion = em.find(Connexion.class, id);
+		em.remove(connexion);
 
 	}
 
