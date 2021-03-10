@@ -1,5 +1,7 @@
 package zero_gaspi.dao;
 
-public interface IIdentite {
+import zero_gaspi.model.Identite;
+
+public interface IIdentite extends IDao<Identite,Long> {
 
 }
