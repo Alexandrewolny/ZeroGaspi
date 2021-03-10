@@ -20,7 +20,6 @@ public class Vendeur extends Identite {
 	@Temporal(TemporalType.DATE)
 	private Date horaire;
 
-
 	public Vendeur() {
 		super();
 	}
@@ -35,14 +34,6 @@ public class Vendeur extends Identite {
 			Connexion connexion, Date horaire) {
 		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.horaire = horaire;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Date getHoraire() {
