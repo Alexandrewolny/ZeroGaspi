@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="client")
-@DiscriminatorValue("client")
+@DiscriminatorValue("Client")
 public class Client {
 	@Id
 	@GeneratedValue
