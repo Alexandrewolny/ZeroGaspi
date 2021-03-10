@@ -5,7 +5,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="particulier")
@@ -16,7 +19,9 @@ public class Particulier {
 	private Long id;
 	@Column(name = "libelle", length = 255)
 	private String libelle;
-	
+	@OneToOne
+	@JoinColumn(name="id")
+	@Transient
 	private Client client;
 
 	public Particulier() {
