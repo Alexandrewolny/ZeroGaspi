@@ -2,6 +2,7 @@ package zero_gaspi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,14 +13,14 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "facture")
 public class Facture {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	
-	//@OneToOne
-	//@JoinColumn(name = "id")
-	@Transient
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "commande_id")
 	private Commande commande;
 
 	
