@@ -20,9 +20,8 @@ public class Paiement {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Date horodatage;
-	/*@OneToOne
-	@JoinColumn(name="id")*/
-	@Transient
+	@OneToOne
+	@JoinColumn(name="commande_payante_id")
 	private CommandePayante commandePayante;
 	
 	public Paiement() {
