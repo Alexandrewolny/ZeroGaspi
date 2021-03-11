@@ -4,10 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
 
 @Entity
 @Table(name="association")
@@ -20,14 +18,33 @@ public class Association extends Client{
 	private String libelle;
 	@Column(name="numero_rna", length = 45)
 	private int numero;
-	@OneToOne
-	@JoinColumn(name="id")
-	@Transient
-	private Client client;
+	
 	
 	public Association() {
 		super();
 	}
+
+	public Association(Long id, String libelle, int numero) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.numero = numero;
+	}
+
+
+	public Association(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
+			String prenom, Connexion connexion, int perimetre) {
+		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion, perimetre);
+		
+	}
+
+
+	public Association(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
+			Connexion connexion, int perimetre) {
+		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion, perimetre);
+		
+	}
+
 
 	public Long getId() {
 		return id;

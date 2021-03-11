@@ -4,11 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
 
 @Entity
 @Table(name="particulier")
@@ -19,24 +17,22 @@ public class Particulier extends Client {
 	private Long id;
 	@Column(length = 255)
 	private String libelle;
-	@Transient
-	private Client client;
+	
 
 	public Particulier() {
 		super();
 	}
 
-	public Particulier(Long id, String libelle, Client client) {
-		super();
-		this.id = id;
-		this.libelle = libelle;
-		this.client = client;
+	public Particulier(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
+			String prenom, Connexion connexion, int perimetre) {
+		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion, perimetre);
+		
 	}
 
-	public Particulier(String libelle, Client client) {
-		super();
-		this.libelle = libelle;
-		this.client = client;
+	public Particulier(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
+			Connexion connexion, int perimetre) {
+		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion, perimetre);
+		
 	}
 
 	public Long getId() {
@@ -55,14 +51,5 @@ public class Particulier extends Client {
 		this.libelle = libelle;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-	
-	
 
 }
