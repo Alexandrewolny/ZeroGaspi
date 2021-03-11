@@ -19,26 +19,22 @@ public class Vendeur extends Identite {
 	@Temporal(TemporalType.DATE)
 	private Date horaire;
 	
-	@OneToOne
-	@JoinColumn(name="entreprise_id")
-	private Entreprise entreprise;
+	
 
 	public Vendeur() {
 		super();
 	}
 
 	public Vendeur(Long id, String numeroTelephone, String rue, String codePostal, String adresse, String nom,
-			String prenom, Connexion connexion, Date horaire, Entreprise entreprise) {
+			String prenom, Connexion connexion, Date horaire) {
 		super(id, numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.horaire = horaire;
-		this.entreprise = entreprise;
 	}
 
 	public Vendeur(String numeroTelephone, String rue, String codePostal, String adresse, String nom, String prenom,
-			Connexion connexion, Date horaire,Entreprise entreprise) {
+			Connexion connexion, Date horaire) {
 		super(numeroTelephone, rue, codePostal, adresse, nom, prenom, connexion);
 		this.horaire = horaire;
-		this.entreprise = entreprise;
 	}
 
 	public Date getHoraire() {
@@ -49,13 +45,7 @@ public class Vendeur extends Identite {
 		this.horaire = horaire;
 	}
 
-	public Entreprise getEntreprise() {
-		return entreprise;
-	}
-
-	public void setEntreprise(Entreprise entreprise) {
-		this.entreprise = entreprise;
-	}
+	
 
 
 
