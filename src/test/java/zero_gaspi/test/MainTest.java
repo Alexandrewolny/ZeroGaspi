@@ -58,7 +58,7 @@ public class MainTest {
 		//clientDao.create(client);
 		//vendeurDao.create(vendeur);
 		//commandeGratuiteDao.create(cg);
-		commandePayanteDao.create(cp);
+		commandePayanteDao.save(cp);
 		
 	
 
