@@ -1,9 +1,10 @@
 package zero_gaspi.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,33 +13,38 @@ public class ListeFavori {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(name="nomEntreprise", length = 255)
-	private String nomEntreprise;
+	@OneToOne
+	@JoinColumn(name="entreprise_id")
+	private Entreprise entreprise;
 	public ListeFavori() {
 		super();
 	}
-	public ListeFavori(Long id, String nomEntreprise) {
+	public ListeFavori(Entreprise entreprise) {
+		super();
+		this.entreprise = entreprise;
+	}
+	
+	public ListeFavori(Long id, Entreprise entreprise) {
 		super();
 		this.id = id;
-		this.nomEntreprise = nomEntreprise;
+		this.entreprise = entreprise;
 	}
-	public ListeFavori(String nomEntreprise) {
-		super();
-		this.nomEntreprise = nomEntreprise;
-	}
+	
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNomEntreprise() {
-		return nomEntreprise;
-	}
-	public void setNomEntreprise(String nomEntreprise) {
-		this.nomEntreprise = nomEntreprise;
+	
+	public Entreprise getEntreprise() {
+		return entreprise;
 	}
 	
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
 	
 
 }

@@ -1,16 +1,14 @@
 package zero_gaspi.model;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-@DiscriminatorValue("client")
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="type_client")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Client extends Identite {
 
 	@Column(name = "perimetre")
