@@ -13,8 +13,8 @@ import javax.persistence.Transient;
 @Entity
 @Table(name="particulier")
 @DiscriminatorValue("particulier")
-public class Particulier {
-	@Id
+public class Particulier extends Client {
+	
 	@GeneratedValue
 	private Long id;
 	@Column(length = 255)

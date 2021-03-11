@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -13,8 +12,8 @@ import javax.persistence.Transient;
 @Entity
 @Table(name="association")
 @DiscriminatorValue("association")
-public class Association {
-	@Id
+public class Association extends Client{
+	
 	@GeneratedValue
 	private Long id;
 	@Column(name= "libelle", length = 255 )
