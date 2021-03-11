@@ -5,9 +5,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="entreprise")
@@ -19,30 +19,30 @@ public class Entreprise {
 	private String numeroSiret;
 	private String typeRestauration;
 	private String nomEntreprise;
-	//@OneToMany
-	@Transient
-	private List<Vendeur> vendeurs;
+	@OneToOne
+	@JoinColumn(name="vendeur_id")
+	private Vendeur vendeur;
 	
 	public Entreprise() {
 		super();
 	}
 
 	public Entreprise(Long id, String numeroSiret, String typeRestauration, String nomEntreprise,
-			List<Vendeur> vendeurs) {
+			Vendeur vendeur) {
 		super();
 		this.id = id;
 		this.numeroSiret = numeroSiret;
 		this.typeRestauration = typeRestauration;
 		this.nomEntreprise = nomEntreprise;
-		this.vendeurs = vendeurs;
+		this.vendeur = vendeur;
 	}
 
-	public Entreprise(String numeroSiret, String typeRestauration, String nomEntreprise, List<Vendeur> vendeurs) {
+	public Entreprise(String numeroSiret, String typeRestauration, String nomEntreprise, Vendeur vendeur) {
 		super();
 		this.numeroSiret = numeroSiret;
 		this.typeRestauration = typeRestauration;
 		this.nomEntreprise = nomEntreprise;
-		this.vendeurs = vendeurs;
+		this.vendeur = vendeur;
 	}
 
 	public Long getId() {
@@ -77,14 +77,14 @@ public class Entreprise {
 		this.nomEntreprise = nomEntreprise;
 	}
 
-	public List<Vendeur> getVendeurs() {
-		return vendeurs;
+	public Vendeur getVendeur() {
+		return vendeur;
 	}
 
-	public void setVendeurs(List<Vendeur> vendeurs) {
-		this.vendeurs = vendeurs;
+	public void setVendeur(Vendeur vendeur) {
+		this.vendeur = vendeur;
 	}
-	
+
 	
 	
 	

@@ -30,9 +30,8 @@ public abstract class Identite {
 	private String Adresse;
 	private String nom;
 	private String prenom;
-	//@OneToMany
-	//@JoinColumn(name="id")
-	@Transient
+	@OneToOne
+	@JoinColumn(name = "connexion_id")
 	private Connexion connexion;
 	
 	
