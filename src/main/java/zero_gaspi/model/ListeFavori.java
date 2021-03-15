@@ -7,14 +7,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="liste_favoris")
 public class ListeFavori {
 	@Id
 	@GeneratedValue
+	@JsonView(IViews.IViewBasic.class)
 	private Long id;
 	@OneToOne
 	@JoinColumn(name="entreprise_id")
+	@JsonView(IViews.IViewListeFavoriDetail.class)
 	private Entreprise entreprise;
 	public ListeFavori() {
 		super();

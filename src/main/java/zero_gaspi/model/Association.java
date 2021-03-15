@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name="association")
@@ -13,10 +14,13 @@ import javax.persistence.Table;
 public class Association extends Client{
 	
 	@GeneratedValue
+	@JsonView(IViews.IViewBasic.class)
 	private Long id;
 	@Column(name= "libelle", length = 255 )
+	@JsonView(IViews.IViewBasic.class)
 	private String libelle;
 	@Column(name="numero_rna", length = 45)
+	@JsonView(IViews.IViewBasic.class)
 	private int numero;
 	
 	
